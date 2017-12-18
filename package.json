@@ -39,7 +39,7 @@
     "copy-img": "cp -r node_modules/patternfly/dist/img src/",
     "build-css": "node-less-chokidar src/App.less --output=src/css",
     "watch-css": "npm run build-css && npm run build-css -- --watch --recursive",
-    "start-js": "react-scripts-ts start",
+    "start-js": "HOST=`0.0.0.0` PORT=8080 react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run copy-fonts && npm run copy-less && npm run copy-img && npm run build-css && react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
