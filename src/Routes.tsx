@@ -14,12 +14,11 @@ declare global {
 }
 
 const importHome = () => System.import('./pages/Home');
-const importIpsum = () => System.import('./pages/Ipsum');
-const importDolor = () => System.import('./pages/Dolor');
-const importAmet = () => System.import('./pages/Amet');
-const importOrbis = () => System.import('./pages/Orbis');
-const importLogin = () => System.import('./pages/Login');
+const importAuthors = () => System.import('./pages/Authors');
+const importSpins = () => System.import('./pages/Spins');
+const importProfile = () => System.import('./pages/Profile')
 const importNotFound = () => System.import('./pages/NotFound');
+
 
 interface Props {
   childProps: any;
@@ -27,43 +26,30 @@ interface Props {
 export const Routes: React.StatelessComponent<Props> = props => {
   return (
     <Switch>
-      <AuthenticatedRoute
+      <UnauthenticatedRoute
         path="/"
         exact
         component={asyncComponent(importHome)}
         props={props.childProps}
       />
       <UnauthenticatedRoute
-        path="/login"
+        path="/authors"
         exact
-        component={asyncComponent(importLogin)}
+        component={asyncComponent(importAuthors)}
+        props={props.childProps}
+      />
+      <UnauthenticatedRoute
+        path="/spins"
+        exact
+        component={asyncComponent(importSpins)}
         props={props.childProps}
       />
       <AuthenticatedRoute
-        path="/ipsum"
+        path="/prifle"
         exact
-        component={asyncComponent(importIpsum)}
+        component={asyncComponent(importProfile)}
         props={props.childProps}
-      />
-      <AuthenticatedRoute
-        path="/dolor"
-        exact
-        component={asyncComponent(importDolor)}
-        props={props.childProps}
-      />
-      <AuthenticatedRoute
-        path="/amet"
-        exact
-        component={asyncComponent(importAmet)}
-        props={props.childProps}
-      />
-      <AuthenticatedRoute
-        path="/orbis"
-        exact
-        component={asyncComponent(importOrbis)}
-        props={props.childProps}
-      />
-
+      />      
       {/* Finally, catch all unmatched routes */}
       <Route component={asyncComponent(importNotFound)} />
     </Switch>

@@ -29,7 +29,7 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        {this.props.credentials.token && <MastHead />}
+        <MastHead />
         {this.props.credentials.token &&
           <VerticalNav handleNavClick={this.handleNavClick} />}
         <Routes childProps={this.props} />
